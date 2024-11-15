@@ -1,5 +1,5 @@
 
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 int lenOfLongestSubarr(vector<int> &arr, int k)
 {
@@ -10,7 +10,7 @@ int lenOfLongestSubarr(vector<int> &arr, int k)
     for (int i = 0; i < n; i++)
     {
         sum += arr[i];
-        mp[sum] = i;
+
         if (sum == k)
         {
             maxLen = max(maxLen, i + 1);
@@ -20,11 +20,16 @@ int lenOfLongestSubarr(vector<int> &arr, int k)
         {
             maxLen = max(maxLen, i - mp[rem]);
         }
+        if (mp.find(sum) == mp.end())
+        {
+            mp[sum] = i;
+        }
     }
     return maxLen;
 }
-int main(){
-    vector<int>arr;
+int main()
+{
+    vector<int> arr;
     int k;
-    int ans = lenOfLongestSubarr(arr,k);
+    int ans = lenOfLongestSubarr(arr, k);
 }
